@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\app\\C104\\product\\18.0.0\\dbhomeXE\\jdbc\\lib\\ojdbc8.jar",
+        "c:\\class250615\\lombok.jar"
+    ]
+}

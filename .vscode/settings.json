@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\class250615\\lombok.jar",
+        "c:\\app\\C104\\product\\18.0.0\\dbhomeXE\\jdbc\\lib\\ojdbc8.jar"
+    ]
+}
