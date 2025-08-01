@@ -28,10 +28,15 @@ public class resultSetTest {
         try (PreparedStatement pstat = conn.prepareStatement(sql)) {
             pstat.setString(1, stp);
             ResultSet rs = pstat.executeQuery();
+            int c = 0;
             while (rs.next()) {
+                c++;
                 System.out.print(rs.getString(2) + " ");
                 System.out.print(rs.getString(3));
                 System.out.println();
+            }
+            if (c == 0) {
+                System.out.println("no");
             }
         } catch (Exception e) {
             System.out.println("select exception >>>>>>>>>>>>>>>>>>>>>>>>>>> " + e.getMessage());
