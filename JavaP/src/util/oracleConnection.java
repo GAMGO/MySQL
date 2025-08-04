@@ -5,8 +5,8 @@ import java.sql.*;
 
 public class oracleConnection {
     private static final String URL = "jdbc:oracle:thin:@//localhost:1521/xe";
-    private static final String USERNAME = "C##LMS";
-    private static final String PASSWORD = "1253";
+    private static final String USERNAME = "C##IDEV";
+    private static final String PASSWORD = "1234";
 
     public static Connection getConnection() {
         Connection connection = null;
