@@ -16,13 +16,23 @@ public class CustomerManageApp {
           register();
           break;
         case "2":
-
+          printInfo();
           break;
         default:
           System.out.println("없는 메뉴 입니다.");
           break;
       }
     }
+  }
+
+  private static void printInfo() {
+    TblCustomerDao dao = new TblCustomerDao();
+    String customerId = System.console().readLine(">>>> ");
+    CustomerVo cus = dao.selectByPk(customerId);
+    System.out.println("name " + cus.getName());
+    System.out.println("E-Mail " + cus.getEmail());
+    System.out.println("AGE  " + cus.getAge());
+    System.out.println("Reg Date" + cus.getRegDate());
   }
 
   private static void register() {
