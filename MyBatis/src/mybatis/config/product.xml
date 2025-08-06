@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   <mapper namespace="tblproduct">
+	<select id="selectByPk" parameterType="String" resultType="ProductVo">
+		select * from tbl_product where pcode=#{pcode}
+	</select>
+	<select id="selectAll" resultType="ProductVo">
+		select * from tbl_product order by pcategory
+	</select>
+    <select id="search" parameterType="String" resultType="ProductVo">
+        select * from tbl_product where pname like '%'||#{kw}||'%'
+    </select>
+	<insert id = "insert" parameterType="ProductVo">
+		insert into tbl_product(pcode, pcategory, pname,price) 
+                    values (#{pcode}, #{pcategory}, #{pname}, #{price})
+	</insert>
+	<update id="update" parameterType="ProductVo">
+		update tbl_product 
+		set pcategory = #{pcategory}, pname= #{pname}, price = #{price} 
+		where pcode = #{pcode}
+	</update>
+	<delete id="delete" parameterType="String">
+		delete from tbl_product 
+			where pcode = #{pcode}
+	</delete>
+</mapper>  

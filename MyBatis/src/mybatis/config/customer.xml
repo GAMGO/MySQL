@@ -5,22 +5,23 @@
 <mapper namespace="tblcustomer">
 	<select id="selectByPk" parameterType="String" resultType="CustomerVo">
 		select * from tbl_customer
-		where custom_id=#{customId}
+		where customer_id=#{customerId}
 	</select>
 	<select id="selectAll" resultType="CustomerVo">
-		select * from tbl_customer order by custom_id
+		select * from tbl_customer order by customer_id
 	</select>
-		insert into tbl_customer(custom_id,name,email,age,reg_date) 
-                    values (#{customId}, #{name}, #{email}, #{age}, sysdate)
+	<insert id = "insert" parameterType="CustomerVo">
+		insert into tbl_customer(customer_id,name,email,age,reg_date) 
+                    values (#{customerId}, #{name}, #{email}, #{age}, sysdate)
 	</insert>
 	<update id="update" parameterType="CustomerVo">
 		update tbl_customer 
 		set email = #{email}, age = #{age} 
-		where custom_id = #{customId}
+		where customer_id = #{customerId}
 	</update>
 	<delete id="delete" parameterType="String">
 		delete from tbl_customer 
-			where custom_id = #{customId}
+			where customer_id = #{customerId}
 	</delete>
 </mapper>  
 <!-- 
