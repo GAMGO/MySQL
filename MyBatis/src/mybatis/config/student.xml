@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.StudentMapper">
+	<select id="selectByPk" parameterType="String" resultType="StudentVo">
+		select * from tbl_student
+		where stuno=#{stuno}
+	</select>
+	<select id="selectAll" resultType="StudentVo">
+		select * from tbl_student order by stuno
+	</select>
+	<insert id="insert" parameterType="StudentVo">
+		insert into tbl_student(stuno,name,age,address) 
+                    values (#{stuno}, #{name}, #{age}, #{address})
+	</insert>
+	<update id="update" parameterType="StudentVo">
+		update tbl_student 
+		set address = #{address}
+		where stuno = #{stuno}
+	</update>
+	<delete id="delete" parameterType="String">
+		delete from tbl_student 
+			where stuno = #{stuno}
+	</delete>
+</mapper>  
+<!-- 
+${}  : jsp에서 getAttribute 역할
+       문자열 기호 ' ' 가 자동으로 생기지 않습니다.
+#{}  : 매퍼 XML 에서 파라미터 기호
+       문자열 기호 ' ' 가 자동으로 생깁니다.
+ -->
+
+
+

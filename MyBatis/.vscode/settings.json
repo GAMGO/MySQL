@@ -1,0 +1,10 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\class250615\\lombok.jar",
+        "c:\\class250615\\ojdbc8.jar",
+        "c:\\class250615\\mybatis-3.5.16.jar"
+    ]
+}
