@@ -66,7 +66,6 @@ public class App {
         try {
             Thread.sleep(d);
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

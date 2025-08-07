@@ -10,8 +10,11 @@
   
   <!-- 타입 별칭 설정하기 -->
   <typeAliases>
-  		<!-- <typeAlias type="mybatis.vo.CustomerVo" alias="CustomerVo"/> -->
+  		<typeAlias type="mybatis.vo.CustomerVo" alias="CustomerVo"/>
   		<typeAlias type="mybatis.vo.ProductVo" alias="ProductVo"/>
+  		<typeAlias type="mybatis.vo.StudentVo" alias="StudentVo"/>
+  		<typeAlias type="mybatis.vo.BuyVo" alias="BuyVo"/>
+  		<typeAlias type="mybatis.vo.CustomerBuyVo" alias="CustomerBuyVo"/>
   </typeAliases>
   
   <!--  jdbc 의 db 연결정보 -->
@@ -30,6 +33,9 @@
   
   <!-- SQL 매퍼 파일을 등록.    -->
   <mappers>
+    <mapper resource="mybatis/config/customer.xml"/>
     <mapper resource="mybatis/config/product.xml"/>
+    <mapper resource="mybatis/config/buy.xml"/>
+    <mapper resource="mybatis/config/student.xml"/>
   </mappers>
 </configuration>

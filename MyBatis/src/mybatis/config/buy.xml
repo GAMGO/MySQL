@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.BuyMapper">
+
+  <select id="selectSaleByCustomer" parameterType="string" resultType="CustomerBuyVo">
+    <!-- join 결과 컬럼에 매핑되는 vo 클래스를 새로 정의 : CustomerSaleVo -->
+      SELECT tp.PCODE,tp.PNAME, tp.PRICE , tp.PRICE*tb.QUANTITY as money
+      from TBL_PRODUCT tp
+      join TBL_BUY tb
+      on tp.PCODE = tb.PCODE
+      and tb.CUSTOMER_ID=#{customer_id}
+  </select>
+   <!-- day5_(3)문제_select.sql 의 9번 추가문제 1)  -->
+  <select id="selectCountByYear" parameterType="string" resultType="map">
+    <!-- 집계 함수의 결과가 1개 행. 조회 컬럼 2개 일 때 효율적인 방법으로 Map 을 사용할 수 있습니다.
+         ㄴ 마이바티스는 YEAR , COUNT 컬럼명을 key 로 하여 각 컬럼의 값은 value 로 HashMap 객체 저장 
+    -->
+    SELECT EXTRACT(YEAR FROM buy_date) AS year,  count(*) as count , sum(quantity) as sum
+    from TBL_BUY tb 
+    group by EXTRACT(YEAR FROM buy_date)
+    having  EXTRACT(YEAR FROM buy_date)=#{year}
+  </select>
+  
+  <select id="selectAllCountByYear" resultType="map">
+    <!-- 집계 함수의 결과가 n개 행. 조회 컬럼 2개 일 때 map을 사용한다면....
+         여기서 map 은 최종 타입이 아니라 List 의 제너릭타입
+    -->
+    SELECT EXTRACT(YEAR FROM buy_date) AS year,  count(*) as count , sum(quantity) as sum
+    from TBL_BUY tb 
+    group by EXTRACT(YEAR FROM buy_date)
+    order by year
+  </select>
+
+	<select id="selectAll">
+	select * from tbl_buy
+</select>
+	<select id="selectByUser" parameterType="string" resultType="BuyVo">
+		select * from tbl_buy where customer_id=#{customer_id}
+	</select>
+    	<select id="selectByStuff" parameterType="string" resultType="BuyVo">
+		select * from tbl_buy where pcode = #{pcode}
+	</select>
+		<select id="selectByYears" parameterType="string" resultType="BuyVo">
+		select * from tbl_buy where to_char(buy_date,'yyyy')=#{buy_date}
+	</select>
+    	<select id="selectSum" parameterType="string" resultType="int">
+		select sum(quantity) from tbl_buy where pcode=#{pcode}
+	</select>
+</mapper>

@@ -10,9 +10,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class StudentVo {
-  private String stuno;
-  private String name;
-  private int age;
-  private String address;
-
+  private final String stuno;
+  private final String name;
+  private final Integer age;
+  private final String addr;
 }

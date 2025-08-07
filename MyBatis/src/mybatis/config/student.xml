@@ -11,12 +11,12 @@
 		select * from tbl_student order by stuno
 	</select>
 	<insert id="insert" parameterType="StudentVo">
-		insert into tbl_student(stuno,name,age,address) 
-                    values (#{stuno}, #{name}, #{age}, #{address})
+		insert into tbl_student(stuno,name,age,addr) 
+                    values (#{stuno}, #{name}, #{age,jdbcType=NUMERIC}, #{addr,jdbcType=VARCHAR})
 	</insert>
 	<update id="update" parameterType="StudentVo">
 		update tbl_student 
-		set address = #{address}
+		set addr = #{addr}
 		where stuno = #{stuno}
 	</update>
 	<delete id="delete" parameterType="String">
@@ -30,6 +30,3 @@ ${}  : jsp에서 getAttribute 역할
 #{}  : 매퍼 XML 에서 파라미터 기호
        문자열 기호 ' ' 가 자동으로 생깁니다.
  -->
-
-
-
